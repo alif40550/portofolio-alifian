@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halaman Profil Pribadi</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  </head>
+  <body>
+    <aside class="profile">
+      <div class="image-profile">
+        <img src="img/profile.png" alt="profile" />
+      </div>
+      <div class="description-profile">
+        <h2>Hi, I'm <span>Alifian</span></h2>
+        <p>Saya adalah seorang mahasiswa semester 5 program studi Pendidikan Teknik Informatika dan Komputer Universitas Negeri Semarang angkatan tahun 2022</p>
+      </div>
+      <div class="social-media">
+        <ul>
+          <li>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    <div class="right-content">
+      <header class="navbar-container">
+        <nav class="menu">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#experiences">My Experience</a></li>
+            <li><a href="#projects">My Project</a></li>
+            <li><a href="#contacts">Get in Touch</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <article id="home">
+          <h1>
+            <a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im Alifian.", "I Like to Code.", "I Love Design.", "I Love to Develop." ]'>
+              <span class="wrap"></span>
+            </a>
+          </h1>
+        </article>
+        <article id="experiences" data-aos="fade-up">
+          <h1 class="heading1">My Experience</h1>
+          <section class="experience">
+            <div class="exp-description">
+              <h2>Kepala Bidang Software</h2>
+              <p>2024 - sekarang</p>
+            </div>
+            <div class="exp-organization">
+              <h3>Electrical Science Club</h3>
+            </div>
+          </section>
+          <div class="accordion-panel">
+            <ul>
+              <li>
+                <h3>Sie Perkab Sekolah Programming 2022</h3>
+                <p>Bertanggung jawab dalam mengurus perlengkapan dalam acara</p>
+              </li>
+              <li>
+                <h3>Sie Humas Training Tech 2022</h3>
+                <p>Bertanggung jawab dalam mengurus perlengkapan dalam acara</p>
+              </li>
+              <li>
+                <h3>Runner Studi Banding ESC X FST Undip</h3>
+                <p>Bertanggung jawab dalam mengurus perlengkapan dalam acara</p>
+              </li>
+            </ul>
+          </div>
+          <section class="experience">
+            <div class="exp-description">
+              <h2>Head of Media and Creative</h2>
+              <p>2024 - sekarang</p>
+            </div>
+            <div class="exp-organization">
+              <h3>Engineering English Club</h3>
+            </div>
+          </section>
+          <div class="accordion-panel">
+            <ul>
+              <li>
+                <h3>Ketua Pelaksana Pelantikan dan Rapat Kerja</h3>
+                <p>Bertanggung jawab dalam mengurus perlengkapan dalam acara</p>
+              </li>
+              <li>
+                <h3>Sie PDD E2C TOEFL 2024</h3>
+                <p>Bertanggung jawab dalam mengurus perlengkapan dalam acara</p>
+              </li>
+              <li>
+                <h3>Sie PDD E2C GETS TALENT 2024</h3>
+                <p>Bertanggung jawab dalam mengurus perlengkapan dalam acara</p>
+              </li>
+            </ul>
+          </div>
+        </article>
+        <article id="projects">
+          <h1 class="heading1">My Projects</h1>
+          <div class="project-content">
+            <div class="project">
+              <img src="img/projects/smart-farming.png" alt="" />
+              <p>Smart Farming Web IoT</p>
+            </div>
+            <div class="project">
+              <img src="img/projects/smart-parking.png" alt="" />
+              <p>Smart Parking System</p>
+            </div>
+            <div class="project">
+              <img src="img/projects/virtual-tour.png" alt="" />
+              <p>Virtual Tour</p>
+            </div>
+            <div class="project">
+              <img src="img/projects/website-esc.png" alt="" />
+              <p>Website Profile ESC 2024</p>
+            </div>
+          </div>
+        </article>
+        <article id="contacts">
+          <div class="content">
+            <h1><span>Interested</span> in me?</h1>
+            <h1>Hit me on <span> Social Media!</span></h1>
+          </div>
+        </article>
+      </main>
+      <footer>
+        <p>Copyright 2022 by Alifian</p>
+      </footer>
+    </div>
+    <script src="script/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
