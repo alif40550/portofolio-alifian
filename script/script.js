@@ -105,4 +105,97 @@ document.addEventListener("DOMContentLoaded", function () {
       this.classList.add("active");
     });
   });
+
+  // Chatbot functionality
+  const openChatbotBtn = document.getElementById("open-chatbot-btn");
+  const closeChatbotBtn = document.getElementById("close-chatbot-btn");
+  const chatbotPopup = document.getElementById("chatbot-popup");
+  const chatbotInputField = document.getElementById("chatbot-input-field");
+  const chatbotSendBtn = document.getElementById("chatbot-send-btn");
+  const chatbotMessages = document.getElementById("chatbot-messages");
+
+  openChatbotBtn.addEventListener("click", () => {
+    chatbotPopup.classList.add("active");
+  });
+
+  closeChatbotBtn.addEventListener("click", () => {
+    chatbotPopup.classList.remove("active");
+  });
+
+  chatbotSendBtn.addEventListener("click", sendMessage);
+  chatbotInputField.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      sendMessage();
+    }
+  });
+
+  function sendMessage() {
+    const userMessage = chatbotInputField.value.trim();
+    if (userMessage === "") return;
+
+    appendMessage(userMessage, "user-message");
+    chatbotInputField.value = "";
+
+    // Tampilkan pesan "Typing..." atau indikator loading
+    const loadingMessage = appendMessage("...", "bot-message-loading");
+
+    // Kirim pesan ke backend Anda
+    fetch("http://localhost:3000/chat", {
+      // Ganti URL ini jika backend Anda berjalan di port/host lain
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message: userMessage }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Hapus pesan loading
+        if (loadingMessage && chatbotMessages.contains(loadingMessage)) {
+          chatbotMessages.removeChild(loadingMessage);
+        }
+        appendMessage(data.response, "bot-message");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Hapus pesan loading dan tampilkan pesan error
+        if (loadingMessage && chatbotMessages.contains(loadingMessage)) {
+          chatbotMessages.removeChild(loadingMessage);
+        }
+        appendMessage("Maaf, terjadi kesalahan. Silakan coba lagi nanti.", "bot-message");
+      });
+  }
+
+  function appendMessage(message, type) {
+    const messageElement = document.createElement("div");
+    messageElement.classList.add("message", type);
+    messageElement.textContent = message;
+    chatbotMessages.appendChild(messageElement);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+
+  // Profile minimalist functionality on scroll (Mobile only)
+  const asideProfile = document.querySelector("aside.profile");
+  const mediaQuery = window.matchMedia("(max-width: 900px)"); // Match with your CSS media query
+
+  function handleScroll() {
+    if (mediaQuery.matches) {
+      if (window.scrollY > 50) {
+        // Adjust scroll threshold as needed
+        asideProfile.classList.add("minimalist");
+      } else {
+        asideProfile.classList.remove("minimalist");
+      }
+    } else {
+      // Ensure minimalist class is removed on larger screens if applied
+      asideProfile.classList.remove("minimalist");
+    }
+  }
+
+  // Initial check and add event listener
+  handleScroll(); // Call once on load
+  window.addEventListener("scroll", handleScroll);
+
+  // Listen for media query changes (e.g., if user resizes window)
+  mediaQuery.addEventListener("change", handleScroll);
 });

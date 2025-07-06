@@ -283,6 +283,25 @@
         <p>Copyright 2022 and renew in 2025 by Alifian</p>
       </footer>
     </div>
+    <div id="chatbot-container">
+      <button id="open-chatbot-btn" class="floating-btn" aria-label="Open Chatbot">
+        <i class="fas fa-comments"></i>
+      </button>
+      <div id="chatbot-popup" class="chatbot-popup glass">
+        <div class="chatbot-header">
+          <h2>Alifian's Chatbot</h2>
+          <button id="close-chatbot-btn" class="close-btn" aria-label="Close Chatbot">&times;</button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+          <!-- Chat messages will be appended here -->
+          <div class="message bot-message">Halo! Saya adalah chatbot Alifian. Anda bisa bertanya tentang Alifian di sini.</div>
+        </div>
+        <div class="chatbot-input">
+          <input type="text" id="chatbot-input-field" placeholder="Tanyakan sesuatu tentang Alifian..." />
+          <button id="chatbot-send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
     <script src="script/script.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
