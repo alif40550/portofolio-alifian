@@ -8,18 +8,19 @@
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
   <body>
-    <aside class="profile">
+    <aside class="profile glass">
       <div class="image-profile">
         <img src="/img/profile.png" alt="profile" />
       </div>
       <div class="description-profile">
         <h2>Hi, I'm <span>Alifian</span></h2>
+        <div class="profile-badge">Informatics Education Student</div>
         <p>Saya adalah seorang mahasiswa semester 5 program studi Pendidikan Teknik Informatika dan Komputer Universitas Negeri Semarang angkatan tahun 2022</p>
       </div>
       <div class="social-media">
@@ -37,14 +38,25 @@
       </div>
     </aside>
     <div class="right-content">
-      <header class="navbar-container">
+      <header class="navbar-container glass">
         <nav class="menu">
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#experiences">My Experience</a></li>
-            <li><a href="#projects">My Project</a></li>
-            <li><a href="#contacts">Get in Touch</a></li>
+            <li>
+              <a href="#"><i class="fas fa-home"></i> <span>Home</span></a>
+            </li>
+            <li>
+              <a href="#experiences"><i class="fas fa-briefcase"></i> <span>My Experience</span></a>
+            </li>
+            <li>
+              <a href="#projects"><i class="fas fa-folder-open"></i> <span>My Project</span></a>
+            </li>
+            <li>
+              <a href="#contacts"><i class="fas fa-envelope"></i> <span>Get in Touch</span></a>
+            </li>
           </ul>
+          <button id="theme-toggle" aria-label="Toggle theme">
+            <span id="theme-icon"><i class="fas fa-moon"></i></span>
+          </button>
         </nav>
       </header>
       <main>
@@ -56,17 +68,100 @@
           </h1>
         </article>
         <article id="experiences" data-aos="fade-up">
-          <h1 class="heading1">My Experience</h1>
+          <h1 class="heading1"><span>My Experience</span></h1>
+          <div class="divider"></div>
           <section class="experience">
             <div class="exp-description">
-              <h2>Kepala Bidang Software</h2>
-              <p>2024 - sekarang</p>
+              <h2><i class="fas fa-briefcase exp-icon"></i>Student Staff Intern</h2>
+              <p>2025</p>
+            </div>
+            <div class="exp-organization">
+              <h3>Public Relation Department Engineering Faculty Universitas Negeri Semarang</h3>
+            </div>
+            <ul>
+              <li>
+                <h3>Mendokumentasikan acara-acara yang dilaksanakan di lingkungan fakultas teknik Universitas Negeri Semarang</h3>
+              </li>
+              <li>
+                <h3>Terlibat dalam pembuatan poster, banner, dan logo untuk acara-acara yang dilaksanakan di lingkungan fakultas teknik Universitas Negeri Semarang</h3>
+              </li>
+              <li>
+                <h3>Terlibat dalam pembuatan video profil prodi</h3>
+              </li>
+            </ul>
+          </section>
+          <section class="experience">
+            <div class="exp-description">
+              <h2><i class="fas fa-laptop-code exp-icon"></i>Software Engineer Intern</h2>
+              <p>2025</p>
+            </div>
+            <div class="exp-organization">
+              <h3>IT Pedia</h3>
+            </div>
+            <ul>
+              <li>
+                <h3>Mengembangkan website profile desa untuk perusahaan IT Pedia</h3>
+              </li>
+              <li>
+                <h3>Melakukan riset di bidang NLP untuk perusahaan IT Pedia</h3>
+              </li>
+            </ul>
+          </section>
+          <section class="experience">
+            <div class="exp-description">
+              <h2><i class="fas fa-laptop-code exp-icon"></i>Software Engineer</h2>
+              <p>2025</p>
+            </div>
+            <div class="exp-organization">
+              <h3>Vuriko Studio</h3>
+            </div>
+            <ul>
+              <li>
+                <h3>Mengembangkan website untuk perusahaan Vuriko Studio</h3>
+              </li>
+            </ul>
+          </section>
+          <section class="experience">
+            <div class="exp-description">
+              <h2><i class="fas fa-laptop-code exp-icon"></i>Software Engineer</h2>
+              <p>2025</p>
+            </div>
+            <div class="exp-organization">
+              <h3>Arca Std.</h3>
+            </div>
+            <ul>
+              <li>
+                <h3>Mengembangkan website untuk perusahaan Arca Std.</h3>
+              </li>
+            </ul>
+          </section>
+          <section class="experience">
+            <div class="exp-description">
+              <h2><i class="fas fa-graduation-cap exp-icon"></i>Bangkit Academy 2024 Batch 2</h2>
+              <p>2024</p>
+            </div>
+            <div class="exp-organization">
+              <h3>Bangkit Academy by Google, Tokopedia, dan Traveloka</h3>
+            </div>
+            <ul>
+              <li>
+                <h3>Distinctive Graduate Cloud Computing Cohort</h3>
+                <p>Menjadi bagian dari cohort dari program pengembangan cloud computing dan berhasil meraih top 10% lulusan terbaik</p>
+              </li>
+              <li>
+                <h3>Project Manager</h3>
+                <p>Berperan menjadi project manager dalam kelompok capstone yang berhasil membawa predikt top 50 dari 644 kelompok</p>
+              </li>
+            </ul>
+          </section>
+          <section class="experience">
+            <div class="exp-description">
+              <h2><i class="fas fa-users-cog exp-icon"></i> Kepala Bidang Software</h2>
+              <p>2024</p>
             </div>
             <div class="exp-organization">
               <h3>Electrical Science Club</h3>
             </div>
-          </section>
-          <div class="accordion-panel">
             <ul>
               <li>
                 <h3>Sie Perkab Sekolah Programming 2022</h3>
@@ -81,17 +176,15 @@
                 <p>Bertanggung jawab dalam mengurus perlengkapan dalam acara</p>
               </li>
             </ul>
-          </div>
+          </section>
           <section class="experience">
             <div class="exp-description">
-              <h2>Head of Media and Creative</h2>
-              <p>2024 - sekarang</p>
+              <h2><i class="fas fa-brush exp-icon"></i> Head of Media and Creative</h2>
+              <p>2024</p>
             </div>
             <div class="exp-organization">
               <h3>Engineering English Club</h3>
             </div>
-          </section>
-          <div class="accordion-panel">
             <ul>
               <li>
                 <h3>Ketua Pelaksana Pelantikan dan Rapat Kerja</h3>
@@ -106,38 +199,88 @@
                 <p>Bertanggung jawab dalam mengurus perlengkapan dalam acara</p>
               </li>
             </ul>
-          </div>
+          </section>
         </article>
         <article id="projects">
-          <h1 class="heading1">My Projects</h1>
+          <h1 class="heading1"><span>My Projects</span></h1>
+          <div class="divider"></div>
           <div class="project-content">
-            <div class="project">
+            <div class="project glass">
+              <i class="fas fa-seedling project-icon"></i>
               <img src="/img/projects/smart-farming.png" alt="" />
               <p>Smart Farming Web IoT</p>
             </div>
-            <div class="project">
+            <div class="project glass">
+              <i class="fas fa-car project-icon"></i>
               <img src="/img/projects/smart-parking.png" alt="" />
               <p>Smart Parking System</p>
             </div>
-            <div class="project">
+            <div class="project glass">
+              <i class="fas fa-vr-cardboard project-icon"></i>
               <img src="/img/projects/virtual-tour.png" alt="" />
               <p>Virtual Tour</p>
             </div>
-            <div class="project">
+            <div class="project glass">
+              <i class="fas fa-users project-icon"></i>
               <img src="/img/projects/website-esc.png" alt="" />
               <p>Website Profile ESC 2024</p>
             </div>
           </div>
         </article>
+        <article id="techstack">
+          <div class="tech-icons-container">
+            <div class="tech-icon glass">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" />
+              <p>HTML</p>
+            </div>
+            <div class="tech-icon glass">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" />
+              <p>CSS</p>
+            </div>
+            <div class="tech-icon glass">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" />
+              <p>JavaScript</p>
+            </div>
+            <div class="tech-icon glass">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript" />
+              <p>TypeScript</p>
+            </div>
+            <div class="tech-icon glass">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP" />
+              <p>PHP</p>
+            </div>
+            <div class="tech-icon glass">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" />
+              <p>Python</p>
+            </div>
+            <div class="tech-icon glass">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" alt="Laravel" />
+              <p>Laravel</p>
+            </div>
+            <div class="tech-icon glass">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-plain.svg" alt="Bootstrap" />
+              <p>Bootstrap</p>
+            </div>
+            <div class="tech-icon glass">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" alt="Express.js" />
+              <p>Express.js</p>
+            </div>
+            <div class="tech-icon glass">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" />
+              <p>React</p>
+            </div>
+          </div>
+        </article>
         <article id="contacts">
           <div class="content">
-            <h1><span>Interested</span> in me?</h1>
-            <h1>Hit me on <span> Social Media!</span></h1>
+            <h1><span class="animated-gradient">Interested</span> in me?</h1>
+            <p class="contact-tagline">Ready to connect? Find me on social media!</p>
+            <a href="#" class="btn-social-media"><i class="fas fa-arrow-left"></i>Hit me on Social Media!</a>
           </div>
         </article>
       </main>
       <footer>
-        <p>Copyright 2022 by Alifian</p>
+        <p>Copyright 2022 and renew in 2025 by Alifian</p>
       </footer>
     </div>
     <script src="script/script.js"></script>
