@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const loadingMessage = appendMessage("...", "bot-message-loading");
 
     // Kirim pesan ke backend Anda
-    fetch("http://localhost:3000/chat", {
+    fetch("/chat", {
       // Ganti URL ini jika backend Anda berjalan di port/host lain
       method: "POST",
       headers: {
