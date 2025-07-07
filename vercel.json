@@ -20,6 +20,22 @@
       "destination": "/public/index.html"
     },
     {
+      "source": "/public/styles/(.*)",
+      "destination": "/public/styles/styles.css"
+    },
+    {
+      "source": "/public/script/(.*)",
+      "destination": "/public/script/script.js"
+    },
+    {
+      "source": "/public/img/(.*)",
+      "destination": "/public/img/$1"
+    },
+    {
+      "source": "/public/img/projects/(.*)",
+      "destination": "/public/img/projects/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/$1"
     }
