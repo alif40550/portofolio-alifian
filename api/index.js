@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import chat from "./controllers/chatbotController.js";
+import chat from "../controllers/chatbotController.js";
 
 dotenv.config();
 

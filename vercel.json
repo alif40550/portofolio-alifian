@@ -17,11 +17,23 @@
     },
     {
       "source": "/",
-      "destination": "/index.html"
+      "destination": "/public/index.html"
+    },
+    {
+      "source": "/styles/(.*)",
+      "destination": "/public/styles/$1"
+    },
+    {
+      "source": "/script/(.*)",j
+      "destination": "/public/script/$1"
+    },
+    {
+      "source": "/img/(.*)",
+      "destination": "/public/img/$1"
     },
     {
       "source": "/(.*)",
-      "destination": "/$1"
+      "destination": "/public/$1"
     }
   ]
 }
