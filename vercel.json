@@ -24,7 +24,7 @@
       "destination": "/public/styles/$1"
     },
     {
-      "source": "/script/(.*)",j
+      "source": "/script/(.*)",
       "destination": "/public/script/$1"
     },
     {
