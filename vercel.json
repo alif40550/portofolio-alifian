@@ -13,27 +13,11 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/app.js"
+      "destination": "/api/index.js"
     },
     {
       "source": "/",
-      "destination": "/public/index.html"
-    },
-    {
-      "source": "styles/(.*)",
-      "destination": "/public/styles/styles.css"
-    },
-    {
-      "source": "script/(.*)",
-      "destination": "/public/script/script.js"
-    },
-    {
-      "source": "img/(.*)",
-      "destination": "/public/img/$1"
-    },
-    {
-      "source": "img/projects/(.*)",
-      "destination": "/public/img/projects/$1"
+      "destination": "/index.html"
     },
     {
       "source": "/(.*)",
