@@ -1,0 +1,65 @@
+const alifianTopics = [
+  "nama",
+  "siapa alifian",
+  "tentang alifian",
+  "riwayat pendidikan",
+  "pendidikan",
+  "kuliah",
+  "universitas",
+  "jurusan",
+  "angkatan",
+  "pengalaman kerja",
+  "pengalaman",
+  "pekerjaan",
+  "intern",
+  "student staff",
+  "software engineer",
+  "proyek",
+  "project",
+  "projek",
+  "portfolio",
+  "aplikasi",
+  "skills",
+  "kemampuan",
+  "tech stack",
+  "teknologi",
+  "bahasa pemrograman",
+  "kontak",
+  "hubungi",
+  "email",
+  "linkedin",
+  "github",
+  "instagram",
+  "social media",
+  "media sosial",
+  "hobi",
+  "minat",
+  "kegiatan",
+  "organisasi",
+  "klub",
+  "bangkit academy",
+  "unnes",
+  "electrical science club",
+  "engineering english club",
+  "ini alifian",
+  "kamu siapa",
+  "tentangmu",
+  "biodata",
+  "informasi",
+  "website ini",
+  "pembuat",
+  "fungsi kamu",
+  "bisa apa",
+  "tentang chatbot",
+  "kamu bot",
+];
+
+export default function isAboutAlifian(query) {
+  const lowerQuery = query.toLowerCase();
+  for (const topic of alifianTopics) {
+    if (lowerQuery.includes(topic)) {
+      return true;
+    }
+  }
+  return false;
+}

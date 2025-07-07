@@ -1,11 +1,12 @@
 {
   "name": "alifian_submission-dicoding",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node script/server.js",
-    "dev": "nodemon script/server.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
