@@ -20,19 +20,19 @@
       "destination": "/public/index.html"
     },
     {
-      "source": "/public/styles/(.*)",
+      "source": "styles/(.*)",
       "destination": "/public/styles/styles.css"
     },
     {
-      "source": "/public/script/(.*)",
+      "source": "script/(.*)",
       "destination": "/public/script/script.js"
     },
     {
-      "source": "/public/img/(.*)",
+      "source": "img/(.*)",
       "destination": "/public/img/$1"
     },
     {
-      "source": "/public/img/projects/(.*)",
+      "source": "img/projects/(.*)",
       "destination": "/public/img/projects/$1"
     },
     {
