@@ -51,11 +51,7 @@ window.onload = function () {
       new TxtType(elements[i], JSON.parse(toRotate), period);
     }
   }
-  // INJECT CSS
-  var css = document.createElement("style");
-  css.type = "text/css";
-  css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid var(--color-text), border-left: 0.08em solid var(--color-text), border-top: 0.08em solid var(--color-text), border-bottom: 0.08em solid var(--color-text)}";
-  document.body.appendChild(css);
+  // Cursor CSS is handled in style.css
 };
 
 // THEME TOGGLE
@@ -65,7 +61,8 @@ function setTheme(theme) {
   const themeIcon = document.getElementById("theme-icon").querySelector("i");
   if (themeIcon) {
     themeIcon.classList.remove("fa-moon", "fa-sun");
-    themeIcon.classList.add(theme === "dark" ? "fa-moon" : "fa-sun");
+    // In dark mode show sun (to switch to light), in light mode show moon (to switch to dark)
+    themeIcon.classList.add(theme === "dark" ? "fa-sun" : "fa-moon");
   }
 }
 
@@ -90,20 +87,39 @@ document.addEventListener("DOMContentLoaded", function () {
   // Smooth scroll for navigation links
   document.querySelectorAll('header.navbar-container .menu a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevent default anchor click behavior
+      e.preventDefault();
 
       document.querySelector(this.getAttribute("href")).scrollIntoView({
         behavior: "smooth",
       });
-
-      // Remove active class from all links
-      document.querySelectorAll("header.navbar-container .menu a").forEach((link) => {
-        link.classList.remove("active");
-      });
-
-      // Add active class to the clicked link
-      this.classList.add("active");
     });
+  });
+
+  // Intersection Observer for active nav links
+  const sections = document.querySelectorAll("article[id]");
+  const navLinks = document.querySelectorAll("header.navbar-container .menu a.nav-link");
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.3,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${entry.target.id}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach((section) => {
+    observer.observe(section);
   });
 
   // Chatbot functionality
@@ -206,4 +222,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Listen for media query changes (e.g., if user resizes window)
   mediaQuery.addEventListener("change", handleScroll);
+
+  // Tech Stack Marquee Duplication for seamless scroll
+  const marqueeContent = document.querySelector(".marquee-content");
+  if (marqueeContent) {
+    const marqueeClone = marqueeContent.cloneNode(true);
+    document.querySelector(".marquee").appendChild(marqueeClone);
+  }
 });

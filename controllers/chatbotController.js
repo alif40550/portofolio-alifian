@@ -1,5 +1,4 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import isAboutAlifian from "../services/topicServices.js";
 
 export default async function chat(req, res) {
   if (req.method !== "POST") {
@@ -10,10 +9,6 @@ export default async function chat(req, res) {
   if (!message) {
     return res.status(400).json({ error: "Message is required" });
   }
-
-  // if (!isAboutAlifian(message)) {
-  //   return res.status(400).json({ error: "Message is not about Alifian" });
-  // }
 
   // Kunci API Gemini dari environment variable Vercel
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
