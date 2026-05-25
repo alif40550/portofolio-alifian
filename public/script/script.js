@@ -229,4 +229,67 @@ document.addEventListener("DOMContentLoaded", function () {
     const marqueeClone = marqueeContent.cloneNode(true);
     document.querySelector(".marquee").appendChild(marqueeClone);
   }
+
+  // --- PREMIUM MICRO-INTERACTIONS ---
+
+  // 1. Scroll Progress Bar
+  const scrollProgress = document.createElement("div");
+  scrollProgress.id = "scroll-progress";
+  document.body.appendChild(scrollProgress);
+
+  window.addEventListener("scroll", () => {
+    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+    scrollProgress.style.width = scrolled + "%";
+  });
+
+  // 2. Glass Cards Spotlight & 3D Tilt Interaction
+  const glassCards = document.querySelectorAll(".glass-card, .achievement-card");
+  glassCards.forEach((card) => {
+    if (!card.classList.contains("glass-card")) {
+      card.classList.add("glass-card");
+    }
+
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
+
+      // 3D Parallax Tilt calculation
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -6; // max -6deg tilt
+      const rotateY = ((x - centerX) / centerX) * 6;  // max 6deg tilt
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "";
+    });
+  });
+
+  // 3. Magnetic Hover Effect
+  const magneticElements = document.querySelectorAll(".btn-cv, #theme-toggle, header.navbar-container .menu a.nav-link, .floating-btn");
+  magneticElements.forEach((el) => {
+    el.addEventListener("mousemove", (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      // Restrict pull distance to keep it neat
+      const pullX = x * 0.25;
+      const pullY = y * 0.25;
+
+      el.style.transform = `translate(${pullX}px, ${pullY}px)`;
+    });
+
+    el.addEventListener("mouseleave", () => {
+      el.style.transform = "";
+    });
+  });
 });
