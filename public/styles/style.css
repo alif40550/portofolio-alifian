@@ -1703,7 +1703,7 @@ footer {
     width: 100%;
   }
 
-  .hero-content {
+  #home > .hero-content {
     flex-direction: column;
     align-items: flex-start;
     gap: 3rem;
@@ -1746,7 +1746,7 @@ footer {
   }
   
   .hero-title {
-    font-size: 3.5rem; /* Adjusted for smaller screens */
+    font-size: clamp(2.4rem, 11vw, 3.8rem);
   }
   
   .scroll-indicator {
@@ -1781,6 +1781,17 @@ footer {
   .stat-num {
     font-size: 2.5rem;
   }
+
+  .social-popup-panel {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .social-popup-link {
+    width: 100%;
+    min-width: 0;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -1793,7 +1804,7 @@ footer {
   }
   
   .hero-title {
-    font-size: 2.8rem;
+    font-size: clamp(2rem, 11vw, 2.8rem);
   }
   
   .project-content {
