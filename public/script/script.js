@@ -292,4 +292,26 @@ document.addEventListener("DOMContentLoaded", function () {
       el.style.transform = "";
     });
   });
+  // ---- HIT ME UP — Social links popup ----
+  const hitMeUpBtn = document.getElementById('hit-me-up-btn');
+  const socialPanel = document.getElementById('social-popup-panel');
+
+  if (hitMeUpBtn && socialPanel) {
+    hitMeUpBtn.addEventListener('click', function () {
+      const isOpen = socialPanel.classList.toggle('open');
+      hitMeUpBtn.classList.toggle('open', isOpen);
+      hitMeUpBtn.setAttribute('aria-expanded', String(isOpen));
+      socialPanel.setAttribute('aria-hidden', String(!isOpen));
+    });
+
+    // Close panel when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!hitMeUpBtn.contains(e.target) && !socialPanel.contains(e.target)) {
+        socialPanel.classList.remove('open');
+        hitMeUpBtn.classList.remove('open');
+        hitMeUpBtn.setAttribute('aria-expanded', 'false');
+        socialPanel.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
 });

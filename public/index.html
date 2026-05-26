@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
@@ -499,9 +499,36 @@
           <div class="content">
             <h1 class="stroke-text">LET'S WORK.</h1>
             <p class="contact-tagline">Ready to connect? Find me on social media.</p>
-            <a href="#" class="btn-primary">
-              HIT ME UP <i class="fas fa-arrow-right"></i>
-            </a>
+            <button class="btn-primary" id="hit-me-up-btn" aria-expanded="false" aria-controls="social-popup-panel">
+              HIT ME UP <i class="fas fa-arrow-right" id="hit-me-up-arrow"></i>
+            </button>
+
+            <div class="social-popup-panel" id="social-popup-panel" aria-hidden="true">
+              <a href="https://www.linkedin.com/in/alifian-alifian-a12588296" target="_blank" class="social-popup-link" style="--i:0">
+                <span class="social-popup-icon"><i class="fab fa-linkedin-in"></i></span>
+                <span class="social-popup-info">
+                  <span class="social-popup-name">LinkedIn</span>
+                  <span class="social-popup-handle">in/alifian-alifian</span>
+                </span>
+                <i class="fas fa-external-link-alt social-popup-ext"></i>
+              </a>
+              <a href="https://github.com/alif40550" target="_blank" class="social-popup-link" style="--i:1">
+                <span class="social-popup-icon"><i class="fab fa-github"></i></span>
+                <span class="social-popup-info">
+                  <span class="social-popup-name">GitHub</span>
+                  <span class="social-popup-handle">@alif40550</span>
+                </span>
+                <i class="fas fa-external-link-alt social-popup-ext"></i>
+              </a>
+              <a href="https://www.instagram.com/alifian236/" target="_blank" class="social-popup-link" style="--i:2">
+                <span class="social-popup-icon"><i class="fab fa-instagram"></i></span>
+                <span class="social-popup-info">
+                  <span class="social-popup-name">Instagram</span>
+                  <span class="social-popup-handle">@alifian236</span>
+                </span>
+                <i class="fas fa-external-link-alt social-popup-ext"></i>
+              </a>
+            </div>
           </div>
         </article>
       </main>
