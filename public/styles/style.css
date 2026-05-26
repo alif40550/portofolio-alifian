@@ -1473,6 +1473,8 @@ footer {
   bottom: 2rem;
   right: 2rem;
   z-index: 1000;
+  width: 58px;
+  height: 58px;
 }
 
 .floating-btn {
@@ -1482,6 +1484,7 @@ footer {
   background: linear-gradient(135deg, var(--navy-600) 0%, var(--blue-400) 100%);
   color: var(--cream-100);
   border: 1px solid rgba(107, 156, 201, 0.3);
+  flex-shrink: 0;
   font-size: 1.4rem;
   cursor: pointer;
   box-shadow: 0 8px 25px rgba(26, 58, 128, 0.5);
@@ -1766,6 +1769,8 @@ footer {
   #chatbot-container {
     bottom: 1rem;
     right: 1rem;
+    width: 58px;
+    height: 58px;
   }
   
   .chatbot-popup {
