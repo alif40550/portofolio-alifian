@@ -52,6 +52,12 @@ const alifianTopics = [
   "bisa apa",
   "tentang chatbot",
   "kamu bot",
+  "prestasi",
+  "penghargaan",
+  "lomba",
+  "juara",
+  "sertifikat",
+  "certificate",
 ];
 
 export default function isAboutAlifian(query) {

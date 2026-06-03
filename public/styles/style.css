@@ -2207,3 +2207,569 @@ footer {
     border-bottom: 1px solid rgba(26, 58, 128, 0.1);
   }
 }
+
+/* ===========================================
+   PROJECT MODAL & CAROUSEL GALLERY
+   =========================================== */
+
+/* Modal Backdrop */
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(5, 13, 31, 0.85); /* matching deep navy overlay */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              visibility 0s linear 0.4s;
+}
+
+.project-modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              visibility 0s linear 0s;
+}
+
+/* Scroll lock when modal is open */
+body.modal-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Modal Card Container */
+.project-modal-card.glass-card {
+  width: 100%;
+  max-width: 960px;
+  max-height: 90vh;
+  background: rgba(12, 26, 56, 0.7); /* translucent navy */
+  border: 1px solid rgba(107, 156, 201, 0.25);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 60px rgba(5, 13, 31, 0.8), 
+              0 0 30px rgba(107, 156, 201, 0.15);
+  position: relative;
+  overflow: hidden;
+  transform: scale(0.9) translateY(30px);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              opacity 0.4s ease;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-modal-backdrop.active .project-modal-card {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* Close Button */
+.project-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(107, 156, 201, 0.1);
+  border: 1px solid rgba(107, 156, 201, 0.2);
+  color: var(--color-text);
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+  z-index: 1010;
+}
+
+.project-modal-close:hover {
+  background: var(--navy-600);
+  border-color: var(--blue-300);
+  color: var(--cream-100);
+  transform: rotate(90deg);
+}
+
+/* Modal Content Grid */
+.project-modal-content {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Left Column: Carousel */
+.project-modal-left {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  background: rgba(5, 13, 31, 0.4);
+  border-right: 1px solid rgba(107, 156, 201, 0.15);
+}
+
+.project-modal-carousel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--navy-950);
+  border: 1px solid rgba(107, 156, 201, 0.15);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.carousel-track-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.carousel-track {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-in;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #030814;
+}
+
+/* Carousel Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: rgba(12, 26, 56, 0.7);
+  border: 1px solid rgba(107, 156, 201, 0.2);
+  border-radius: 50%;
+  color: var(--blue-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: var(--transition-smooth);
+}
+
+.carousel-btn:hover {
+  background: var(--navy-600);
+  border-color: var(--blue-300);
+  color: var(--cream-100);
+}
+
+.carousel-btn-prev {
+  left: 1rem;
+}
+
+.carousel-btn-next {
+  right: 1rem;
+}
+
+.carousel-btn.hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Carousel Dots Indicator */
+.carousel-dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 20;
+  background: rgba(5, 13, 31, 0.6);
+  padding: 0.4rem 0.8rem;
+  border-radius: 100px;
+  border: 1px solid rgba(107, 156, 201, 0.15);
+  backdrop-filter: blur(4px);
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(232, 228, 195, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.carousel-dot.active {
+  background: var(--blue-300);
+  box-shadow: 0 0 8px var(--blue-300);
+  width: 20px;
+  border-radius: 4px;
+}
+
+/* Right Column: Info Details */
+.project-modal-right {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  position: relative;
+  background: rgba(12, 26, 56, 0.2);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-project-number {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(107, 156, 201, 0.2);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.modal-project-title {
+  font-family: var(--font-primary);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--cream-100);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, var(--cream-100) 0%, var(--blue-200) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.modal-project-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-project-role {
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--blue-200);
+  background: rgba(107, 156, 201, 0.15);
+  border: 1px solid rgba(107, 156, 201, 0.25);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+
+.modal-project-tech {
+  font-family: var(--font-secondary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--blue-300);
+  background: rgba(26, 58, 128, 0.25);
+  border: 1px solid rgba(107, 156, 201, 0.15);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+
+.modal-project-desc-container {
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.modal-project-desc {
+  font-family: var(--font-secondary);
+  color: var(--color-text-dim);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.modal-project-actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-action-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.9rem 2rem !important;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.modal-no-link-msg {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  border: 1px dashed rgba(107, 156, 201, 0.2);
+  background: rgba(107, 156, 201, 0.03);
+  border-radius: 4px;
+  color: var(--blue-300);
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* Lightbox Fullscreen Backdrop */
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(3, 8, 20, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 3000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+}
+
+.lightbox-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.35s ease, visibility 0s linear 0s;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 3010;
+}
+
+.lightbox-close:hover {
+  transform: scale(1.2) rotate(90deg);
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.9);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.lightbox-backdrop.active .lightbox-content {
+  transform: scale(1);
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 100vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/* ===========================================
+   LIGHT THEME MODIFIER OVERRIDES
+   =========================================== */
+[data-theme="light"] .project-modal-backdrop {
+  background-color: rgba(240, 244, 251, 0.85);
+}
+
+[data-theme="light"] .project-modal-card.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(26, 58, 128, 0.15);
+  box-shadow: 0 30px 60px rgba(26, 58, 128, 0.15);
+}
+
+[data-theme="light"] .project-modal-close {
+  background: rgba(26, 58, 128, 0.05);
+  border-color: rgba(26, 58, 128, 0.1);
+  color: #1A3A80;
+}
+
+[data-theme="light"] .project-modal-close:hover {
+  background: #1A3A80;
+  color: #fff;
+}
+
+[data-theme="light"] .project-modal-left {
+  background: #F0F4FB;
+  border-right-color: rgba(26, 58, 128, 0.1);
+}
+
+[data-theme="light"] .project-modal-carousel {
+  background: #E2E9F5;
+  border-color: rgba(26, 58, 128, 0.1);
+}
+
+[data-theme="light"] .carousel-slide img {
+  background-color: #E2E9F5;
+}
+
+[data-theme="light"] .carousel-btn {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(26, 58, 128, 0.1);
+  color: #1A3A80;
+}
+
+[data-theme="light"] .carousel-btn:hover {
+  background: #1A3A80;
+  color: #fff;
+  border-color: #1A3A80;
+}
+
+[data-theme="light"] .carousel-dots {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(26, 58, 128, 0.1);
+}
+
+[data-theme="light"] .carousel-dot {
+  background: rgba(26, 58, 128, 0.25);
+}
+
+[data-theme="light"] .carousel-dot.active {
+  background: #1A3A80;
+  box-shadow: 0 0 8px rgba(26, 58, 128, 0.3);
+}
+
+[data-theme="light"] .modal-project-number {
+  -webkit-text-stroke: 1px rgba(26, 58, 128, 0.2);
+}
+
+[data-theme="light"] .modal-project-title {
+  background: linear-gradient(135deg, #050D1F 0%, #1A3A80 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="light"] .modal-project-role {
+  color: #1A3A80;
+  background: rgba(26, 58, 128, 0.08);
+  border-color: rgba(26, 58, 128, 0.15);
+}
+
+[data-theme="light"] .modal-project-tech {
+  color: #4A72C4;
+  background: rgba(74, 114, 196, 0.08);
+  border-color: rgba(74, 114, 196, 0.12);
+}
+
+[data-theme="light"] .modal-project-desc {
+  color: rgba(5, 13, 31, 0.7);
+}
+
+[data-theme="light"] .modal-no-link-msg {
+  border-color: rgba(26, 58, 128, 0.15);
+  background: rgba(26, 58, 128, 0.02);
+  color: #1A3A80;
+}
+
+[data-theme="light"] .lightbox-backdrop {
+  background-color: rgba(240, 244, 251, 0.97);
+}
+
+[data-theme="light"] .lightbox-close {
+  color: #1A3A80;
+}
+
+
+/* ===========================================
+   RESPONSIVE LAYOUTS FOR MODAL
+   =========================================== */
+@media screen and (max-width: 900px) {
+  .project-modal-content {
+    grid-template-columns: 1fr;
+    max-height: 80vh;
+  }
+  
+  .project-modal-backdrop {
+    padding: 1rem;
+  }
+  
+  .project-modal-left {
+    padding: 1.5rem;
+    border-right: none;
+    border-bottom: 1px solid rgba(107, 156, 201, 0.15);
+  }
+  
+  [data-theme="light"] .project-modal-left {
+    border-bottom-color: rgba(26, 58, 128, 0.1);
+  }
+  
+  .project-modal-right {
+    padding: 1.5rem;
+    max-height: none;
+  }
+  
+  .project-modal-card.glass-card {
+    max-height: 95vh;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .project-modal-left, .project-modal-right {
+    padding: 1rem;
+  }
+  
+  .modal-project-title {
+    font-size: 1.4rem;
+  }
+  
+  .project-modal-close {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 32px;
+    height: 32px;
+    font-size: 1.25rem;
+  }
+}
