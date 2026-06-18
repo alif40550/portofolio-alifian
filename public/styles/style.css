@@ -83,6 +83,11 @@
   padding: 0;
 }
 
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -93,6 +98,7 @@ body {
   min-height: 100vh;
   transition: background-color 0.5s ease, color 0.5s ease;
   overflow-x: hidden;
+  max-width: 100%;
   position: relative;
 }
 
@@ -749,9 +755,9 @@ h1.heading1 {
 
 .experience.glass-card {
   padding: 2rem;
-  background: rgba(12, 26, 56, 0.6);
-  border: 1px solid rgba(107, 156, 201, 0.12);
-  border-left: 3px solid rgba(107, 156, 201, 0.2);
+  background: rgba(15, 32, 67, 0.75);
+  border: 1px solid rgba(107, 156, 201, 0.22);
+  border-left: 3px solid rgba(107, 156, 201, 0.35);
   backdrop-filter: blur(8px);
   transition: var(--transition-smooth);
 }
@@ -865,8 +871,8 @@ h1.heading1 {
 
 .project.glass-card {
   position: relative;
-  background: rgba(12, 26, 56, 0.5);
-  border: 1px solid rgba(107, 156, 201, 0.12);
+  background: rgba(15, 32, 67, 0.7);
+  border: 1px solid rgba(107, 156, 201, 0.2);
   padding: 1rem;
   transition: var(--transition-smooth);
   display: block;
@@ -918,17 +924,17 @@ h1.heading1 {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(5, 13, 31, 0.96) 0%,
-    rgba(26, 58, 128, 0.7) 50%,
-    rgba(5, 13, 31, 0.1) 100%
+    rgba(5, 13, 31, 0.95) 0%,
+    rgba(26, 58, 128, 0.55) 50%,
+    rgba(5, 13, 31, 0.05) 100%
   );
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 1.5rem;
-  opacity: 0;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  opacity: 1;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   transition: var(--transition-smooth);
 }
 
@@ -937,7 +943,14 @@ h1.heading1 {
 }
 
 .project.glass-card:hover .project-overlay {
-  opacity: 1;
+  background: linear-gradient(
+    to top,
+    rgba(5, 13, 31, 0.98) 0%,
+    rgba(26, 58, 128, 0.8) 60%,
+    rgba(5, 13, 31, 0.2) 100%
+  );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .project-title {
@@ -946,8 +959,8 @@ h1.heading1 {
   font-weight: 700;
   color: var(--cream-100);
   margin-bottom: 0.25rem;
-  transform: translateY(15px);
-  transition: transform 0.4s ease 0.05s;
+  transform: translateY(0);
+  transition: transform 0.4s ease;
   text-transform: uppercase;
   line-height: 1.3;
   letter-spacing: 0.05em;
@@ -958,8 +971,8 @@ h1.heading1 {
   font-size: 0.75rem;
   color: var(--blue-200);
   margin-bottom: 0.75rem;
-  transform: translateY(15px);
-  transition: transform 0.4s ease 0.1s;
+  transform: translateY(0);
+  transition: transform 0.4s ease;
   line-height: 1.4;
   opacity: 0.85;
 }
@@ -977,8 +990,8 @@ h1.heading1 {
   border-radius: 3px;
   align-self: flex-start;
   margin-bottom: 0.5rem;
-  transform: translateY(15px);
-  transition: transform 0.4s ease 0.15s;
+  transform: translateY(0);
+  transition: transform 0.4s ease;
 }
 
 .project-tech {
@@ -986,15 +999,15 @@ h1.heading1 {
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--blue-300);
-  transform: translateY(15px);
-  transition: transform 0.4s ease 0.2s;
+  transform: translateY(0);
+  transition: transform 0.4s ease;
 }
 
 .project.glass-card:hover .project-title,
 .project.glass-card:hover .project-desc,
 .project.glass-card:hover .project-role,
 .project.glass-card:hover .project-tech {
-  transform: translateY(0);
+  transform: translateY(-2px);
 }
 
 /* --- ACHIEVEMENTS --- */
@@ -1978,8 +1991,9 @@ footer {
 /* Experience cards */
 [data-theme="light"] .experience.glass-card {
   background: #FFFFFF;
-  border-color: rgba(26, 58, 128, 0.1);
-  border-left-color: rgba(26, 58, 128, 0.2);
+  border-color: rgba(26, 58, 128, 0.18);
+  border-left-color: rgba(26, 58, 128, 0.35);
+  box-shadow: 0 4px 20px rgba(26, 58, 128, 0.04);
   backdrop-filter: none;
 }
 
@@ -2011,7 +2025,8 @@ footer {
 /* Project cards */
 [data-theme="light"] .project.glass-card {
   background: #FFFFFF;
-  border-color: rgba(26, 58, 128, 0.1);
+  border-color: rgba(26, 58, 128, 0.18);
+  box-shadow: 0 4px 20px rgba(26, 58, 128, 0.04);
   backdrop-filter: none;
 }
 
@@ -2300,7 +2315,8 @@ body.modal-open {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   width: 100%;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
 }
 
@@ -2729,7 +2745,6 @@ body.modal-open {
 @media screen and (max-width: 900px) {
   .project-modal-content {
     grid-template-columns: 1fr;
-    max-height: 80vh;
   }
   
   .project-modal-backdrop {
@@ -2753,10 +2768,20 @@ body.modal-open {
   
   .project-modal-card.glass-card {
     max-height: 95vh;
+    padding-top: 4.5rem;
+  }
+  
+  .project-modal-close {
+    top: 1.25rem;
+    right: 1.25rem;
   }
 }
 
 @media screen and (max-width: 480px) {
+  .project-modal-card.glass-card {
+    padding-top: 3.5rem;
+  }
+
   .project-modal-left, .project-modal-right {
     padding: 1rem;
   }
