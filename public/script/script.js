@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Intersection Observer for active nav links
-  const sections = document.querySelectorAll("article[id]");
+  const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll("header.navbar-container .menu a.nav-link");
 
   const observerOptions = {
@@ -488,6 +488,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   prevBtn.addEventListener('click', showPrevSlide);
   nextBtn.addEventListener('click', showNextSlide);
+
+  // Mobile swipe gestures for carousel
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  track.addEventListener('touchstart', function (e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  
+  track.addEventListener('touchend', function (e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50; // minimum distance to count as swipe
+    if (touchEndX - touchStartX < -swipeThreshold) {
+      showNextSlide();
+    } else if (touchEndX - touchStartX > swipeThreshold) {
+      showPrevSlide();
+    }
+  }
 
   // Lightbox functions
   function openLightbox(src) {
