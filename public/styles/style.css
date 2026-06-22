@@ -2252,6 +2252,7 @@ footer {
   padding: 2rem;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
               visibility 0s linear 0.4s;
 }
@@ -2259,6 +2260,7 @@ footer {
 .project-modal-backdrop.active {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
   transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
               visibility 0s linear 0s;
 }
@@ -2266,7 +2268,6 @@ footer {
 /* Scroll lock when modal is open */
 body.modal-open {
   overflow: hidden;
-  height: 100vh;
 }
 
 /* Modal Card Container */
@@ -2383,7 +2384,7 @@ body.modal-open {
   cursor: zoom-in;
 }
 
-.carousel-slide.active {
+.project-modal-backdrop.active .carousel-slide.active {
   opacity: 1;
   visibility: visible;
   z-index: 10;
@@ -2594,12 +2595,14 @@ body.modal-open {
   padding: 2rem;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: opacity 0.35s ease, visibility 0s linear 0.35s;
 }
 
 .lightbox-backdrop.active {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
   transition: opacity 0.35s ease, visibility 0s linear 0s;
 }
 
